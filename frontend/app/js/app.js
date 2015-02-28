@@ -8,7 +8,7 @@ var weddingApp = angular.module('weddingApp', [
   'weddingServices'
 ]);
 
-phonecatApp.config(['$routeProvider',
+weddingApp.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/welcome', {
