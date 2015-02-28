@@ -1,0 +1,14 @@
+{
+  "name": "simplecss",
+  "homepage": "https://github.com/neculaesei/simplecss",
+  "version": "0.0.1",
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "7d6fa38e1670bb2eb0a4ba00ee7d18db05a593d5"
+  },
+  "_source": "git://github.com/neculaesei/simplecss.git",
+  "_target": "*",
+  "_originalSource": "simplecss"
+}
