@@ -32,8 +32,8 @@ h2 {
 
 /* Buttons */
 button, button:focus {
-  color: #FD6834;
-  border-color: #FD6834;
+  color: #ffb55e;
+  border-color: #ffb55e;
   font-family: "Roboto";
   font-weight: 300;
   border-width: 2px;
@@ -47,10 +47,11 @@ button:hover {
 
 /* Headers */
 .header {
-  border-bottom: 2px solid #FD6834;
+  border-bottom: 2px solid #FBCA98;
   padding: 15px 0;
-  color: #FD6834;
+  color: #ffb55e;
   font-weight: 300;
+  position: relative;
 }
 .header button {
   margin: 0;
@@ -72,9 +73,30 @@ button:hover {
 .header .menu li:hover {
   color: #ffb55e;
 }
+.header .birds {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 22%;
+  top: -4px;
+}
 
 /* Page :: Welcome */
+.welcome-hero {
+  margin-top: 2%;
+}
 .welcome-hero button {
   padding-left: 40px;
   padding-right: 40px;
+}
+.welcome-hero div:not(.z-low){
+  position: relative;
+  z-index: 2;
+}
+.welcome-hero .branches {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  opacity: 0.3;
+  z-index: 1;
 }
