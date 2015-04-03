@@ -95,7 +95,7 @@ button:hover {
 }
 .welcome-hero .branches {
   position: fixed;
-  bottom: 0;
+  bottom: -140px;
   width: 100%;
   opacity: 0.3;
   z-index: 1;
