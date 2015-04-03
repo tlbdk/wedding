@@ -14,7 +14,7 @@
    viewBox="0 0 210 297"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91+devel r"
+   inkscape:version="0.91 r"
    sodipodi:docname="flow.svg">
   <defs
      id="defs4" />
@@ -25,15 +25,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.98994949"
-     inkscape:cx="744.45437"
-     inkscape:cy="781.48923"
+     inkscape:zoom="1.979899"
+     inkscape:cx="421.3914"
+     inkscape:cy="865.44084"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="2495"
-     inkscape:window-height="1416"
-     inkscape:window-x="65"
+     inkscape:window-width="1839"
+     inkscape:window-height="1056"
+     inkscape:window-x="81"
      inkscape:window-y="24"
      inkscape:window-maximized="1" />
   <metadata
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -438,7 +438,7 @@
            height="79.802048"
            x="206.07112"
            y="258.33417" /></flowRegion><flowPara
-         id="flowPara6456"></flowPara></flowRoot>    <flowRoot
+         id="flowPara6456" /></flowRoot>    <flowRoot
        xml:space="preserve"
        id="flowRoot6458"
        style="font-style:normal;font-weight:normal;font-size:5.33333349px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1143,7 +1143,7 @@
          id="tspan5526-1-6-8"
          x="110.06808"
          y="64.419037"
-         style="stroke-width:0.07644284px">Gift</tspan></text>
+         style="stroke-width:0.07644284px">Gifts</tspan></text>
     <g
        id="g5718-8-5"
        transform="matrix(1.3056373,0,0,1.3056373,-26.161157,43.03481)">
@@ -1399,7 +1399,7 @@
          id="tspan5526-1-6-8-0"
          x="139.86862"
          y="64.419037"
-         style="stroke-width:0.07644284px">Gift</tspan></text>
+         style="stroke-width:0.07644284px">Gifts</tspan></text>
     <g
        id="g5718-8-5-1"
        transform="matrix(1.3056373,0,0,1.3056373,3.6393945,43.034808)">
