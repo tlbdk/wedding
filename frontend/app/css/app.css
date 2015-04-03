@@ -1,0 +1,80 @@
+/* Imports */
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700);
+
+/* General */
+body {
+  font-weight: 100;
+  color: #333;
+  font-family: "Roboto";
+}
+div.view-frame {
+  margin-top: 0;
+}
+
+/* Typography */
+h1 {
+  font-size: 3em;
+  font-weight: 300;
+}
+h2 {
+  font-size: 1.3em;
+  font-weight: 300;
+}
+.c-orange {   
+  color: #FD6834;
+}
+.c-light {
+  color: #999;
+}
+.w-light {
+  font-weight: lighter;
+}
+
+/* Buttons */
+button, button:focus {
+  color: #FD6834;
+  border-color: #FD6834;
+  font-family: "Roboto";
+  font-weight: 300;
+  border-width: 2px;
+  margin-top: 20px;
+}
+button:hover {
+  color: #ffb55e;
+  border-color: #ffb55e;
+  border-width: 2px;
+}
+
+/* Headers */
+.header {
+  border-bottom: 2px solid #FD6834;
+  padding: 15px 0;
+  color: #FD6834;
+  font-weight: 300;
+}
+.header button {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+.header .menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  width: 100%;
+}
+.header .menu li {
+  display: inline-block;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.header .menu li:hover {
+  color: #ffb55e;
+}
+
+/* Page :: Welcome */
+.welcome-hero button {
+  padding-left: 40px;
+  padding-right: 40px;
+}
