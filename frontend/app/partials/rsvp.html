@@ -1,0 +1,19 @@
+<div ng-include="'partials/header.html'"></div>
+<div class="container welcome-hero">
+  <div class="row hero">
+    <div class="col w10/12 o1/12">
+      <h1>
+        RSVP 
+      </h1>
+      <ul>
+        <li ng-repeat="person in people">
+          <div>
+          <span>{{person.name}}</span><i class="{{person.coming === null ? 'status-unknown' : (person.coming ? 'status-yes' : 'status-no')}}"/> 
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+
+</div>

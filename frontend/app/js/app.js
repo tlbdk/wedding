@@ -13,15 +13,19 @@ weddingApp.config(['$routeProvider',
     $routeProvider.
       when('/welcome', {
         templateUrl: 'partials/welcome.html',
-        controller: 'WelcomeCtrl'
+        controller: 'StaticCtrl'
       }).
       when('/gettinghere', {
         templateUrl: 'partials/gettinghere.html',
-        controller: 'WelcomeCtrl'
+        controller: 'StaticCtrl'
       }).
       when('/accommodation', {
         templateUrl: 'partials/accommodation.html',
-        controller: 'WelcomeCtrl'
+        controller: 'StaticCtrl'
+      }).
+      when('/rsvp', {
+        templateUrl: 'partials/rsvp.html',
+        controller: 'RSVPCtrl'
       }).
       otherwise({
         redirectTo: '/welcome'
