@@ -30,8 +30,13 @@ h2 {
   font-weight: lighter;
 }
 
+/* Links */
+a {
+  text-decoration: none;
+}
+
 /* Buttons */
-button, button:focus {
+button, button:focus, a {
   color: #ffb55e;
   border-color: #ffb55e;
   font-family: "Roboto";
