@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "Troels Liebe Bentsen",
     "coming": true,
     "transportation": true,
@@ -8,6 +9,7 @@
     "comments": ""
   },
   {
+    "id": 2,
     "name": "Andrew",
     "coming": true,
     "transportation": true,
@@ -16,6 +18,7 @@
     "comments": ""
   },
   {
+    "id": 3,
     "name": "Aisma",
     "coming": true,
     "transportation": true,

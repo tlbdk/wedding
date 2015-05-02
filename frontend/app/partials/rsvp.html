@@ -1,14 +1,17 @@
 <div ng-include="'partials/header.html'"></div>
-<div class="container welcome-hero">
+<div class="container rsvp">
   <div class="row hero">
     <div class="col w10/12 o1/12">
       <h1>
-        RSVP 
+        RSVP
       </h1>
       <ul>
-        <li ng-repeat="person in people">
-          <div>
-          <span>{{person.name}}</span><i class="{{person.coming === null ? 'status-unknown' : (person.coming ? 'status-yes' : 'status-no')}}"/> 
+        <li ng-repeat="guest in guests">
+          <div class="guest">
+            <a ng-href="#/rsvp/{{guest.id}}">
+              <span>{{guest.name}}</span>
+              <i class="{{guest.coming === null ? 'status-unknown' : (guest.coming ? 'fa fa-check status-yes' : 'fa fa-times status-no')}}"/>
+            </a>
           </div>
         </li>
       </ul>

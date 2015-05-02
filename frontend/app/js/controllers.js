@@ -7,31 +7,16 @@ var weddingControllers = angular.module('weddingControllers', []);
 weddingControllers.controller('StaticCtrl', ['$scope', function($scope) {
 }]);
 
-weddingControllers.controller('RSVPCtrl', ['$scope', function($scope) {
-    $scope.people = [
-  {
-    "name": "Troels Liebe Bentsen",
-    "coming": true,
-    "transportation": true,
-    "children": false,
-    "food": "",
-    "comments": ""
-  },
-  {
-    "name": "Andrew",
-    "coming": true,
-    "transportation": true,
-    "children": false,
-    "food": "",
-    "comments": ""
-  },
-  {
-    "name": "Aisma",
-    "coming": true,
-    "transportation": true,
-    "children": false,
-    "food": "",
-    "comments": ""
-  }
-];
+weddingControllers.controller('RSVPCtrl', ['$scope', 'RSVP', function($scope, RSVP) {
+  $scope.guests = RSVP.query();
+}]);
+
+weddingControllers.controller('RSVPShowCtrl', ['$scope', '$location', '$routeParams', 'RSVP', function($scope, $location, $routeParams, RSVP) {
+  $scope.guest = RSVP.get({ id: $routeParams.id });
+  
+  $scope.save = function(guest) {
+    guest.$update(function() {
+      $location.path("/rsvp");
+    });
+  };
 }]);

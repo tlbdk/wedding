@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="6.0411787mm"
-   height="2.8576996mm"
-   viewBox="0 0 21.405751 10.125707"
+   width="321.00479mm"
+   height="151.84708mm"
+   viewBox="0 0 1137.4186 538.0408"
    id="svg5191"
    version="1.1"
-   inkscape:version="0.91 r"
+   inkscape:version="0.91+devel r"
    sodipodi:docname="birds.svg">
   <defs
      id="defs5193" />
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.9195959"
-     inkscape:cx="40.068937"
-     inkscape:cy="-27.388869"
+     inkscape:zoom="0.7"
+     inkscape:cx="148.78476"
+     inkscape:cy="615.89349"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -35,9 +35,9 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1839"
-     inkscape:window-height="1056"
-     inkscape:window-x="81"
+     inkscape:window-width="2495"
+     inkscape:window-height="1416"
+     inkscape:window-x="65"
      inkscape:window-y="24"
      inkscape:window-maximized="1" />
   <metadata
@@ -56,10 +56,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-308.22615,-268.57579)">
+     transform="translate(-263.71653,-263.72151)">
     <g
        id="g3907-3"
-       transform="matrix(0.32225862,0,0,-0.32225862,164.63747,604.28657)"
+       transform="matrix(17.123573,0,0,-17.123573,-7366.0288,18102.09)"
        style="fill:#fbca98;fill-opacity:1">
       <path
          d="m 453.8398,1026.7183 c 2.3967,4.54 4.1219,7.6618 5.8275,9.9368 1.7056,2.276 3.3913,3.7061 5.0601,4.447 1.6696,0.7413 3.3214,0.7929 4.6534,0.3946 1.332,-0.3977 2.3442,-1.2452 3.5682,-1.8411 1.2249,-0.595 2.6617,-0.9365 3.3798,-1.1078 0.7183,-0.1712 0.7183,-0.1712 0.2582,-0.2741 -0.4595,-0.1029 -1.3782,-0.3095 -1.8933,-0.4952 -0.515,-0.1859 -0.625,-0.352 -0.494,-0.7778 0.1312,-0.4258 0.5042,-1.112 0.8331,-2.0052 0.3291,-0.8929 0.6131,-1.9925 0.6789,-3.2681 0.0657,-1.2753 -0.0868,-2.7269 -1.154,-4.4461 -1.0673,-1.7193 -3.0484,-3.7061 -5.4596,-4.716 -2.4111,-1.0095 -5.2517,-1.0418 -7.4219,-1.0619 -2.1705,-0.019 -3.6695,-0.026 -4.885,-0.2432 -1.2155,-0.2163 -2.1472,-0.6423 -2.9369,-1.2592 -0.7889,-0.6159 -1.4363,-1.4235 -1.838,-2.3655 -0.4008,-0.9411 -0.5562,-2.0177 -0.6103,-3.179 -0.0533,-1.1608 -0.006,-2.4066 0.0178,-3.0297 0.0239,-0.6228 0.0239,-0.6228 -1.0153,-0.7146 -1.0386,-0.092 -3.1162,-0.275 -4.14,-0.3654 -1.0231,-0.09 -0.9922,-0.087 0.557,2.8933 1.5497,2.9807 4.6185,8.9388 7.0143,13.4782"

@@ -3,6 +3,7 @@
 /* App Module */
 var weddingApp = angular.module('weddingApp', [
   'ngRoute',
+  'toggle-switch',
   'weddingControllers',
   'weddingFilters',
   'weddingServices'
@@ -26,6 +27,10 @@ weddingApp.config(['$routeProvider',
       when('/rsvp', {
         templateUrl: 'partials/rsvp.html',
         controller: 'RSVPCtrl'
+      }).
+      when('/rsvp/:id', {
+        templateUrl: 'partials/rsvpshow.html',
+        controller: 'RSVPShowCtrl'
       }).
       otherwise({
         redirectTo: '/welcome'

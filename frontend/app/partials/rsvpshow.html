@@ -1,0 +1,50 @@
+<div ng-include="'partials/header.html'"></div>
+<div class="container rsvp">
+  <div class="row hero">
+    <div class="col w10/12 o1/12">
+      <h1>
+        RSVP for {{guest.name}}
+      </h1>
+      <div>
+      <ul>
+        <li>
+          <p>Joining the wedding?</p>
+          <toggle-switch
+            ng-model="guest.coming"
+            on-label="Yes"
+            off-label="No">
+          </toggle-switch>
+        </li>
+        <li>
+          <p>Need transportation from Riga?</p>
+          <toggle-switch ng-disabled="guest.coming === false"
+            ng-model="guest.transportation"
+            on-label="Yes"
+            off-label="No">
+          </toggle-switch>
+        </li>
+        <li>
+          <p>Having small children with you?</p>
+          <toggle-switch ng-disabled="guest.coming === false"
+            ng-model="guest.children"
+            on-label="Yes"
+            off-label="No">
+          </toggle-switch>
+        </li>
+        <li>
+            <p><label for="guest_food">Food limitations</label></p>
+            <textarea id="guest_food" type="text" ng-model="guest.food"></textarea>
+        </li>
+        <li>
+            <p><label for="guest_comments">Comments</label></p>
+            <textarea id="guest_comments" type="text" ng-model="guest.comments"></textarea>
+        </li>
+      </ul>
+      </div>
+      <div>
+        <button id="save_button" class="green" ng-click="save(guest)">Save</button>
+      </div>
+    </div>
+  </div>
+    <div>{{person | json}}</div>
+</div>
