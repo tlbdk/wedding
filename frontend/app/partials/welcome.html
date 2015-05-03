@@ -22,4 +22,12 @@
   <div class="row z-low">
     <img src="img/branches.svg" class="branches"/>
   </div>
+  <canvas id="qr-code"></canvas>
+  </div>
+  <script>
+      qr.canvas({
+        canvas: document.getElementById('qr-code'),
+        value: 'https://www.married.dk/?key=1234'
+      });
+    </script> 
 </div>

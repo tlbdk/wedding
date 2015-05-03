@@ -14,6 +14,7 @@
     "jquery": "~2.1.1",
     "simplecss": "*",
     "fontawesome": "https://github.com/FortAwesome/Font-Awesome.git#~4.3.0",
-    "angular-toggle-switch": "~1.2.1"
+    "angular-toggle-switch": "~1.2.1",
+    "qr-js": "~1.1.3"
   }
 }
