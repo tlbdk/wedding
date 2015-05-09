@@ -13,3 +13,11 @@ weddingServices.factory('RSVP', ['$resource', function($resource){
     //stripTrailingSlashes: false
   });
 }]);
+
+weddingServices.factory('Invitation', ['$resource', function($resource){
+  return $resource('http://localhost.nversion.dk/api/invitation');
+}]);
+
+weddingServices.factory('Pay', ['$resource', function($resource){
+  return $resource('http://localhost.nversion.dk/api/pay');
+}]);

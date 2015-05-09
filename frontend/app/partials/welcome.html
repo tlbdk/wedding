@@ -3,14 +3,17 @@
   <div class="row hero">
     <div class="col w10/12 o1/12">
       <h1>
-        Aisma &amp; Troels
+        {{invitation.title}}
       </h1>
       <h2>
-        You are invited to our awesome wedding, taking place <b>Saturday</b>,
+        You are hereby totally invited to our wedding, taking place <b>Saturday</b>,
         <br> the <b>15th of August 2015.</b>
       </h2>
       <h2>
-        We'll be expecting you at <b>Jumurdas Manor House, Latvia :-)</b>
+        The wedding will be held in <b>Jumurdas Manor House, Latvia :-)</b>
+      </h2>
+      <h2>
+        Please RSVP before <b>June 15, 2015</b>
       </h2>
     </div>
   </div>
@@ -19,15 +22,20 @@
       <button class="large" onclick="window.location.href='#/rsvp'">Fill in RSVP</button>
     </div>
   </div>
+  <div class="row">
+    <h2>
+      <a href="#/whoarethesepeople">Who are these people?</a>
+    </h2>
+  </div>
   <div class="row z-low">
     <img src="img/branches.svg" class="branches"/>
   </div>
   <canvas id="qr-code"></canvas>
   </div>
   <script>
-      qr.canvas({
+      /* qr.canvas({
         canvas: document.getElementById('qr-code'),
         value: 'https://www.married.dk/?key=1234'
-      });
+      }); */
     </script> 
 </div>
