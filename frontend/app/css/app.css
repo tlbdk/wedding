@@ -252,6 +252,10 @@ button.green:hover {
 
 /* Page :: RSVP */
 
+.rsvp div.guest i.status-unknown {
+   color: orange;
+}
+
 .rsvp div.guest i.status-no {
    color: red;
 }
@@ -259,6 +263,7 @@ button.green:hover {
 .rsvp div.guest i.status-yes {
    color: green;
 }
+
 .rsvp ul {
   list-style-type: none;
 }

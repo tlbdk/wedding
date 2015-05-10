@@ -14,7 +14,7 @@ CREATE TABLE `invitation` (
 CREATE TABLE `guest` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `coming` tinyint(1) NOT NULL DEFAULT '1',
+  `coming` tinyint(1),
   `transportation` tinyint(1) NOT NULL DEFAULT '1',
   `children` tinyint(1) NOT NULL DEFAULT '0',
   `food` text,
@@ -41,4 +41,4 @@ INSERT INTO `invitation` (`title`, `key`)
 VALUES ('Dear Troels & Aisma', "1234");
 
 INSERT INTO `guest` (`name`, `coming`, `transportation`, `children`, `invitation_id`) 
-VALUES ('Troels Liebe Bentsen', 1, 1, 0, 1), ('Andrew', 1, 1, 0, 1), ('Aisma Vitina', 1, 1, 0, 1);
+VALUES ('Troels Liebe Bentsen', null, 1, 0, 1), ('Andrew', null, 1, 0, 1), ('Aisma Vitina', null, 1, 0, 1);

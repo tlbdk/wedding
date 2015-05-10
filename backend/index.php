@@ -125,7 +125,7 @@ $app->get('/rsvp', function () use ($app, $pdo) {
     while($guest = $stmt->fetch()) {
         // Fix type mapping
         $guest->transportation = $guest->transportation ? true : false;
-        $guest->coming = $guest->coming ? true : false;
+        $guest->coming = $guest->coming === null ? null : ($guest->coming ? true : false);
         $guest->children = $guest->children ? true : false;
 
         $results[] = $guest;

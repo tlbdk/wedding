@@ -10,7 +10,7 @@
           <div class="guest">
             <a ng-href="#/rsvp/{{guest.id}}">
               <span>{{guest.name}}</span>
-              <i class="{{guest.coming === null ? 'status-unknown' : (guest.coming ? 'fa fa-check status-yes' : 'fa fa-times status-no')}}"/>
+              <i class="{{guest.coming === null ? 'fa fa-question status-unknown' : (guest.coming ? 'fa fa-check status-yes' : 'fa fa-times status-no')}}"/>
             </a>
           </div>
         </li>
