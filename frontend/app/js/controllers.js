@@ -25,8 +25,7 @@ weddingControllers.controller('RSVPShowCtrl', ['$scope', '$location', '$routePar
   };
 }]);
 
-weddingControllers.controller('GiftsCtrl', ['$scope', 'Pay', function($scope, Pay) {
-  $scope.email = "";
+weddingControllers.controller('GiftsCtrl', ['$scope', '$location', 'Pay', 'ngDialog', function($scope, $location, Pay, ngDialog) {
   $scope.total = 0;
   $scope.gifts = [
     {
@@ -55,13 +54,19 @@ weddingControllers.controller('GiftsCtrl', ['$scope', 'Pay', function($scope, Pa
     gift.amount += amount;
     $scope.total += amount;
   }
+  
   $scope.decrement = function(gift, amount) {
     if(gift.amount > 0) {
       gift.amount -= amount;
       $scope.total -= amount;
     }
   }
-  $scope.pay = function (gifts) {
+  
+  $scope.pay_confirmation = function () {
+    ngDialog.open({ template: 'pay_confirmation', scope: $scope });
+  }
+  
+  $scope.pay = function (gifts, address, cb) {
     // Remove gifts with zero amount
     var gifts = gifts.filter(function(gift) {
       return gift.amount > 0;
@@ -70,11 +75,13 @@ weddingControllers.controller('GiftsCtrl', ['$scope', 'Pay', function($scope, Pa
     // Add e-mail to all gifts and post
     var payload = gifts.map(function(gift) {
       var clone = angular.copy(gift);
-      clone.email = $scope.email
+      clone.address = address;
       return clone;
     });
+
     Pay.save(payload, function() {
-      
+      cb();
+      $location.path("/gifts/thanks");
     });
   }
 }]);

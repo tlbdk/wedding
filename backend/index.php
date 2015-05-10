@@ -103,15 +103,20 @@ $app->options('/rsvp/:id', function() use ($app) {
 $app->post('/pay', function () use($app, $pdo) {
   $json = $app->request->getBody();
   $data = json_decode($json, true);
-  $stmt = $pdo->prepare("INSERT INTO pay (title, amount, email, invitation_id) VALUES(:title, :amount, :email, :invitation_id)");
+  $stmt = $pdo->prepare("INSERT INTO pay (title, amount, address, invitation_id) VALUES(:title, :amount, :address, :invitation_id)");
   foreach($data as $gift) {
     // TODO:
-    $gift['email'] = "tlb@rapanden.dk";
     $invitation_id = 1;
   
     if($gift['amount'] > 0) {
+      if(!isset($gift['address'])) {
+        $gift['address'] = null;
+      }
+      
+      //file_put_contents("/tmp/php-debug.txt",  var_export($gift, true));
+      
       // Update database 
-      $stmt->execute(array(':title' => $gift['title'], ':amount' => $gift['amount'], ':email' => $gift['email'], 
+      $stmt->execute(array(':title' => $gift['title'], ':amount' => $gift['amount'], ':address' => $gift['address'], 
                          ':invitation_id' => $invitation_id));
     }
   }

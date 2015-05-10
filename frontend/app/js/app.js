@@ -4,6 +4,7 @@
 var weddingApp = angular.module('weddingApp', [
   'ngRoute',
   'toggle-switch',
+  'ngDialog',
   'weddingControllers',
   'weddingFilters',
   'weddingServices'
@@ -43,6 +44,10 @@ weddingApp.config(['$routeProvider',
       when('/gifts', {
         templateUrl: 'partials/gifts.html',
         controller: 'GiftsCtrl'
+      }).
+      when('/gifts/thanks', {
+        templateUrl: 'partials/giftsthanks.html',
+        controller: 'StaticCtrl'
       }).
       otherwise({
         redirectTo: '/welcome'

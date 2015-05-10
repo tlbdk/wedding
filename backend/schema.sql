@@ -7,7 +7,7 @@ CREATE TABLE `invitation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `key` varchar(255) NOT NULL,
-  `updated` timestamp ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -19,7 +19,7 @@ CREATE TABLE `guest` (
   `children` tinyint(1) NOT NULL DEFAULT '0',
   `food` text,
   `comments` text,
-  `updated` timestamp ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `invitation_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`invitation_id`) REFERENCES `invitation`(id)
@@ -29,8 +29,8 @@ CREATE TABLE `pay` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `amount` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `updated` timestamp ON UPDATE CURRENT_TIMESTAMP,
+  `address` text,
+  `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `invitation_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (`invitation_id`) REFERENCES `invitation`(id)

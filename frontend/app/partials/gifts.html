@@ -17,10 +17,32 @@
           </div>
         </li>
       </ul>
-      <p>If you provide your mailing address along with your adventure-present, we will make sure to send you a little postcard thank-you greeting from the respective destination!</p>
-      <input ng-model="email" type="text"></input>
-      <button ng-click="pay(gifts)" >Pay {{total}} EUR</button>
+      
+      
+      <button ng-click="pay_confirmation()" ng-disabled="total === 0" >Gift a total of {{total}} EUR</button>
     </div>
   </div>
-
+  <script type="text/ng-template" id="pay_confirmation">
+      <h2>Payment methods</h2>
+    <p>Please make a transfer of <b>{{total}} EUR</b> using one of the following payment methods</p>
+      <ul>
+        <li>
+          <b>Danish Bank Account Transfer</b>
+          <p>Reg.Nr: 4314</p>
+          <p>Konto Nr: 4688370736</p>
+        </li>
+        <li>
+          <b>Mobile Pay Phone number</b>
+          <p>51 51 18 38</p>
+        </li>
+        <li>
+          <b>International Bank Transfer</b>
+          <p>SWIFT/BIC: DABADKKK</p>
+          <p>IBAN: DK5930004688370736</p>
+        </li>
+      </ul>
+      <p>If you provide your mailing address along with your adventure-present, we will make sure to send you a little postcard thank-you greeting from the respective destination!</p>
+      <textarea id="gift_address" type="text" ng-model="address"></textarea>
+      <button ng-click="pay(gifts, address, closeThisDialog)" >Confirm</button>
+  </script>
 </div>
