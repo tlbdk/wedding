@@ -1,7 +1,7 @@
 <div class="container header">
-  <div class="row">
-    <div class="col w2/12 o1/12">
-      <a href="#/welcome"><button class="simple">Aisma &amp; Troels</button></a>
+  <div class="row default">
+    <div class="col w2/12 o1/12 m:w10/12 m:o1/12">
+      <a href="#/welcome">Aisma &amp; Troels</a>
     </div>
     <div class="col w8/12">
       <ul class="menu">
@@ -13,6 +13,23 @@
         <li><a href="#/contact">Contact</a></li>
       </ul>
     </div>
-    <img class="birds" src="img/birds.svg"></img>
+    <img class="birds" src="img/birds.svg"/>
+  </div>
+  <div class="row mobile">
+    <span>Aisma &amp; Troels</span>
+    <button
+            ng-init="burger_visible = false"
+            ng-click="burger_visible = !burger_visible"
+    ><i class="fa fa-bars"></i></button>
+<!--    <ul class="burger visible">-->
+    <ul class="burger" ng-class="burger_visible ? 'visible' : ''">
+      <li><a href="#/welcome">Welcome</a></li>
+      <li><a href="#/thewedding">The Wedding</a></li>
+      <li><a href="#/rsvp">RSVP</a></li>
+      <li><a href="#/gettingthere">Getting there</a></li>
+      <li><a href="#/accommodation">Accommodation</a></li>
+      <li><a href="#/gifts">Gifts</a></li>
+      <li><a href="#/contact">Contact</a></li>
+    </ul>
   </div>
 </div>

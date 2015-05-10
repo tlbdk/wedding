@@ -1,7 +1,7 @@
 <div ng-include="'partials/header.html'"></div>
 <div class="container welcome-hero">
   <div class="row hero">
-    <div class="col w10/12 o1/12">
+    <div class="col w8/12 o2/12 m:w10/12 m:o1/12">
       <h1>
         {{invitation.title}}
       </h1>
@@ -18,24 +18,23 @@
     </div>
   </div>
   <div class="row">
-    <div class="col w10/12 o1/12">
+    <div class="col w8/12 o2/12">
       <button class="large" onclick="window.location.href='#/rsvp'">Fill in RSVP</button>
     </div>
   </div>
   <div class="row">
-    <h2>
+    <h2 class="col w8/12 o2/12">
       <a href="#/whoarethesepeople">Who are these people?</a>
     </h2>
   </div>
   <div class="row z-low">
     <img src="img/branches.svg" class="branches"/>
   </div>
-  <canvas id="qr-code"></canvas>
-  </div>
-  <script>
-      /* qr.canvas({
-        canvas: document.getElementById('qr-code'),
-        value: 'https://www.married.dk/?key=1234'
-      }); */
-    </script> 
+<!--  <canvas id="qr-code"></canvas>-->
 </div>
+<script>
+  /* qr.canvas({
+    canvas: document.getElementById('qr-code'),
+    value: 'https://www.married.dk/?key=1234'
+  }); */
+</script>
