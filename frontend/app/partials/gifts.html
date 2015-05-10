@@ -1,7 +1,7 @@
 <div ng-include="'partials/header.html'"></div>
-<div class="container rsvp">
-  <div class="row hero">
-    <div class="col w10/12 o1/12">
+<div class="container gifts">
+  <div class="row">
+    <div class="col w8/12 o2/12 m:w10/12 m:o1/12">
       <h1>
         Gifts
       </h1>
@@ -9,17 +9,21 @@
       <p>If you would like to chip into our wedding trip or some of the activities we are planning during the trip, please see below</p>
       <ul>
         <li ng-repeat="gift in gifts">
-          <div>
-            <p>{{gift.title}} - {{gift.amount}} EUR</p>
-            <button ng-click="increment(gift, 10)" >+</button>
-            <button  ng-click="decrement(gift, 10)" >-</button>
+          <div class="gift">
+            <h3>{{gift.title}} - {{gift.amount}} EUR</h3>
+            <div class="wrap">
+              <div class="buttons">
+                <button class="increment" ng-click="increment(gift, 10)" >+</button>
+                <button  class="decrement" ng-click="decrement(gift, 10)" >-</button>
+              </div>
             <img ng-src="img/{{gift.img}}" />
+            </div>
           </div>
         </li>
       </ul>
       
       
-      <button ng-click="pay_confirmation()" ng-disabled="total === 0" >Gift a total of {{total}} EUR</button>
+      <button class="pay" ng-click="pay_confirmation()" ng-disabled="total === 0" >Gift a total of {{total}} EUR</button>
     </div>
   </div>
   <script type="text/ng-template" id="pay_confirmation">
@@ -28,17 +32,17 @@
       <ul>
         <li>
           <b>Danish Bank Account Transfer</b>
-          <p>Reg.Nr: 4314</p>
-          <p>Konto Nr: 4688370736</p>
+          <p>Reg.Nr: <span class="blue">4314</span></p>
+          <p>Konto Nr: <span class="blue">4688370736</span></p>
         </li>
         <li>
-          <b>Mobile Pay Phone number</b>
-          <p>51 51 18 38</p>
+          <b>Mobile Pay</b>
+          <p>Phone number: <span class="blue">51 51 18 38</span></p>
         </li>
         <li>
           <b>International Bank Transfer</b>
-          <p>SWIFT/BIC: DABADKKK</p>
-          <p>IBAN: DK5930004688370736</p>
+          <p>SWIFT/BIC: <span class="blue">DABADKKK</span></p>
+          <p>IBAN: <span class="blue">DK5930004688370736</span></p>
         </li>
       </ul>
       <p>If you provide your mailing address along with your adventure-present, we will make sure to send you a little postcard thank-you greeting from the respective destination!</p>
