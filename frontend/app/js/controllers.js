@@ -11,6 +11,32 @@ weddingControllers.controller('WelcomeCtrl', ['$scope', 'Invitation', function($
   $scope.invitation = Invitation.get();
 }]);
 
+weddingControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', '$routeParams', function($scope, $rootScope, $location, $auth, $http, $routeParams) {
+  $auth.logout();
+  $scope.login = function(key) {
+    $http({
+      method: 'POST',
+      url: 'http://192.168.10.6/api/auth/token',
+      data: $.param({key: key}),
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    })
+      .success(function(data, status, headers, config) {
+        if(data.hasOwnProperty('access_token')) {
+          $auth.setToken(data.access_token);
+        } else {
+          $scope.error = data.error;
+        }
+      })
+      .error(function(data, status, headers, config) {
+        $scope.error = "Login failed with unknown error";
+      });
+  };
+  
+  if($routeParams['key']) {
+    $scope.login($routeParams['key']);
+  }
+}]);
+
 weddingControllers.controller('RSVPCtrl', ['$scope', 'RSVP', function($scope, RSVP) {
   $scope.guests = RSVP.query();
 }]);
