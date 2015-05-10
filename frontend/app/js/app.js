@@ -49,6 +49,10 @@ weddingApp.config(['$routeProvider',
         templateUrl: 'partials/giftsthanks.html',
         controller: 'StaticCtrl'
       }).
+      when('/contact', {
+        templateUrl: 'partials/contact.html',
+        controller: 'StaticCtrl'
+      }).
       otherwise({
         redirectTo: '/welcome'
       });
