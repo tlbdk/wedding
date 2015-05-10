@@ -426,7 +426,7 @@ button.green:hover {
 }
 .gift .wrap button {
   margin: 0;
-  width: 40px;
+  /* width: 40px; */
   height: 40px;
 }
 .gift .wrap button:active {
