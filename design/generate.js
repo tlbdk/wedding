@@ -1,30 +1,61 @@
-var DOMParser = require('xmldom').DOMParser;
-var XMLSerializer = require('xmldom').XMLSerializer;
-var xmls = new XMLSerializer();
-var qr = require('qr-image');
-var fs = require('fs');
-var base64 = require('base64-stream');
+var mysql = require('mysql');
 
-var data = fs.readFileSync("invitation.svg", 'utf8');
-var doc = new DOMParser().parseFromString(data);
-
-var title = "Dear Troels";
-var code = "12345678";
-var link = "https://www.married.dk?key=" + code;
-
-
-var te = doc.getElementById("tspan4277");
-te.textContent = "Dear Troels";
-
-var ce = doc.getElementById("tspan4759");
-ce.textContent = "code: " + code;
-
-var qe = doc.getElementById("image166");
-var qrcode_stream = qr.image(link, { type: 'png' }).pipe(base64.encode());
-var qrcode_base64 = '';
-qrcode_stream.on('data', function(data) { qrcode_base64 += data })
-qrcode_stream.on('end', function() {
-  qe.setAttribute("xlink:href", "data:" + "image/png" + ";base64," + qrcode_base64);  
-  // Save the new svg
-  fs.writeFileSync("invitation2.svg", xmls.serializeToString(doc), "utf8");
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : '',
+  database : 'wedding'
 });
+
+connection.connect();
+
+connection.query('SELECT * from invitation', function(err, rows, fields) {
+  if (!err)
+    rows.forEach(function(row){
+      if(row['language'] === 'English') { 
+        generateInvitation("invitation.svg", "tmp/" + row['id'] + ".svg", {
+          title: ['tspan4277', row['title']],
+          code: ['tspan4759', "code: " +row['key']],
+          link: ['image166', "https://www.married.dk/key=" + row['key']]
+        });
+      } else if(row['language'] === 'Latvian') {
+        generateInvitation("invitation.svg", "tmp/" + row['id'] + ".svg", {
+          title: ['tspan4277', row['title']],
+          code: ['tspan4759', "code: " +row['key']],
+          link: ['image166', "https://www.married.dk/key=" + row['key']]
+        });
+      }
+    });
+    
+  else
+    console.log('Error while performing Query.');
+});
+
+connection.end();
+
+function generateInvitation(template, outfile, fields) {
+  var DOMParser = require('xmldom').DOMParser;
+  var XMLSerializer = require('xmldom').XMLSerializer;
+  var xmls = new XMLSerializer();
+  var qr = require('qr-image');
+  var fs = require('fs');
+  var base64 = require('base64-stream');
+  var data = fs.readFileSync("invitation.svg", 'utf8');
+  var doc = new DOMParser().parseFromString(data);
+
+  var te = doc.getElementById(fields['title'][0]);
+  te.textContent = fields['title'][0];
+
+  var ce = doc.getElementById(fields['code'][0]);
+  ce.textContent = fields['code'][1];
+
+  var qe = doc.getElementById(fields['link'][0]);
+  var qrcode_stream = qr.image(fields['title'][1], { type: 'png' }).pipe(base64.encode());
+  var qrcode_base64 = '';
+  qrcode_stream.on('data', function(data) { qrcode_base64 += data })
+  qrcode_stream.on('end', function() {
+    qe.setAttribute("xlink:href", "data:" + "image/png" + ";base64," + qrcode_base64);  
+    // Save the new svg
+    fs.writeFileSync(outfile, xmls.serializeToString(doc), "utf8");
+  });
+}
