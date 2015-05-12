@@ -50,7 +50,7 @@ function generateInvitation(template, outfile, fields) {
   ce.textContent = fields['code'][1];
 
   var qe = doc.getElementById(fields['link'][0]);
-  var qrcode_stream = qr.image(fields['link'][1], { type: 'png' }).pipe(base64.encode());
+  var qrcode_stream = qr.image(fields['link'][1], { type: 'png', ec_level: 'H', margin: 0, parse_url: false }).pipe(base64.encode());
   var qrcode_base64 = '';
   qrcode_stream.on('data', function(data) { qrcode_base64 += data })
   qrcode_stream.on('end', function() {
