@@ -7,6 +7,7 @@ CREATE TABLE `invitation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `key` varchar(255) NOT NULL,
+  `language` varchar(255) NOT NULL,
   `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -35,10 +36,3 @@ CREATE TABLE `pay` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`invitation_id`) REFERENCES `invitation`(id)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-
--- Insert sample data
-INSERT INTO `invitation` (`title`, `key`) 
-VALUES ('Dear Troels & Aisma', "1234");
-
-INSERT INTO `guest` (`name`, `coming`, `transportation`, `children`, `invitation_id`) 
-VALUES ('Troels Liebe Bentsen', null, 1, 0, 1), ('Andrew', null, 1, 0, 1), ('Aisma Vitina', null, 1, 0, 1);
