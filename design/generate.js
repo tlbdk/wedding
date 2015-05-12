@@ -22,7 +22,7 @@ connection.query('SELECT * from invitation', function(err, rows, fields) {
         generateInvitation("invitation.svg", "tmp/" + row['id'] + ".svg", {
           title: ['tspan4277', row['title']],
           code: ['tspan4759', "code: " +row['key']],
-          link: ['image166', "https://www.married.dk/key=" + row['key']]
+          link: ['image166', "https://www.married.dk/?key=" + row['key']]
         });
       }
     });
@@ -44,13 +44,13 @@ function generateInvitation(template, outfile, fields) {
   var doc = new DOMParser().parseFromString(data);
 
   var te = doc.getElementById(fields['title'][0]);
-  te.textContent = fields['title'][0];
+  te.textContent = fields['title'][1];
 
   var ce = doc.getElementById(fields['code'][0]);
   ce.textContent = fields['code'][1];
 
   var qe = doc.getElementById(fields['link'][0]);
-  var qrcode_stream = qr.image(fields['title'][1], { type: 'png' }).pipe(base64.encode());
+  var qrcode_stream = qr.image(fields['link'][1], { type: 'png' }).pipe(base64.encode());
   var qrcode_base64 = '';
   qrcode_stream.on('data', function(data) { qrcode_base64 += data })
   qrcode_stream.on('end', function() {
