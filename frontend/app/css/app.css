@@ -3,10 +3,16 @@
 @import url(//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 
 /* General */
+html, body {
+  height: 100%;
+}
 body {
-  font-weight: 100;
+  font-weight: 300;
   color: #333;
   font-family: "Roboto";
+  line-height: 1.6em;
+  color: #3f3f3f;
+  -webkit-transform: translate3d(0,0,0);
 }
 div.view-frame {
   margin-top: 0;
@@ -16,10 +22,17 @@ div.view-frame {
 h1 {
   font-size: 3em;
   font-weight: 300;
+  margin-bottom: 50px;
 }
 h2 {
+  font-size: 1.5em;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+h3 {
   font-size: 1.3em;
   font-weight: 300;
+  margin-bottom: 10px;
 }
 .c-orange {   
   color: #FD6834;
@@ -31,13 +44,17 @@ h2 {
   font-weight: lighter;
 }
 
+/* Animatable */
+button, a, a span, i { 
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
 /* Links */
 a {
   text-decoration: none;
-}
-
-/* Buttons */
-button, button:focus, a {
   color: #ffb55e;
   border-color: #ffb55e;
   font-family: "Roboto";
@@ -45,30 +62,67 @@ button, button:focus, a {
   border-width: 2px;
   margin-top: 20px;
 }
-button:hover {
+
+/* Buttons */
+button, button:focus {
   color: #ffb55e;
   border-color: #ffb55e;
+  font-family: "Roboto";
+  font-weight: 300;
   border-width: 2px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+button:hover {
+  color: white;
+  border-color: #ffb55e;
+  border-width: 2px;
+  background: #ffb55e;
+}
+button.green {
+  border: 1px solid #31A15B;
+  color: #31A15B;
+  min-width: 200px;
+}
+button.green:hover {
+  background: #31A15B;
+  color: white;
 }
 
 /* Toggle switch */
 .toggle-switch {
-    border: 1px solid;
     cursor: pointer;
     display: inline-block;
     text-align: left;
     overflow: hidden;
     line-height: 8px;
     min-width: 100px;
+    border-radius: 5px;
+    border: 1px solid #ededed;
+    position: relative;
 }
 
 .toggle-switch-animate {
     margin-top: 0px;
 }
 
+/*
 .toggle-switch.disabled > div > span.knob {
-    background: #AAA;
+    background: #dedcdc;
 }
+*/
+.toggle-switch.disabled:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #333;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+}
+
 
 .toggle-switch span {
     cursor: pointer;
@@ -76,11 +130,12 @@ button:hover {
     float: left;
     height: 100%;
     line-height: 20px;
-    padding: 4px;
+    padding: 8px;
     text-align: center;
     width: 33%;
     white-space: nowrap;
-
+    font-weight: normal;
+    
     box-sizing: border-box;
     -o-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -94,8 +149,8 @@ button:hover {
 
 .toggle-switch .knob {
     background: red;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+/*    border-left: 1px solid #ccc;*/
+/*    border-right: 1px solid #ccc;*/
     background-color: #f5f5f5;
     width: 34%;
     z-index: 100;
@@ -114,13 +169,13 @@ button:hover {
 }
 
 .toggle-switch .switch-left {
-    color: #fff;
-    background: green;
+    color: white;
+    background: #2aa258;
 }
 
 .toggle-switch .switch-right {
-    color: #333;
-    background: red;
+    color: red;
+    background: white;
 }
 
 .toggle-switch-animate {
@@ -133,10 +188,15 @@ button:hover {
 /* Headers */
 .header {
   border-bottom: 2px solid #FBCA98;
-  padding: 15px 0;
   color: #ffb55e;
   font-weight: 300;
   position: relative;
+}
+.header .default {
+  padding: 15px 0;
+}
+.header .mobile {
+  display: none;
 }
 .header button {
   margin: 0;
@@ -168,7 +228,8 @@ button:hover {
 
 /* Page :: Welcome */
 .welcome-hero {
-  margin-top: 2%;
+  margin-top: 5%;
+  line-height: 2em;
 }
 .welcome-hero button {
   padding-left: 40px;
@@ -185,11 +246,14 @@ button:hover {
   opacity: 0.3;
   z-index: 1;
 }
+.welcome-hero > div:not(.hero) h2 {
+	margin-top: 30px;
+}
 
 /* Page :: RSVP */
-.rsvp div.guest {
-    border-style: solid;
-    border-width: thin;
+
+.rsvp div.guest i.status-unknown {
+   color: orange;
 }
 
 .rsvp div.guest i.status-no {
@@ -199,5 +263,341 @@ button:hover {
 .rsvp div.guest i.status-yes {
    color: green;
 }
-  
 
+.rsvp ul {
+  list-style-type: none;
+}
+.rsvp .guest {
+  border: 0;
+  display: inline-block;
+  padding: 10px 15px;
+  background: white;
+  min-width: 40%;
+  position: relative;
+  border-radius: 5px;
+  border: 1px solid #ededed;
+}
+.rsvp .guest a span {
+  color: #4f4f4f;
+  font-weight: normal
+}
+.rsvp .guest a:hover span {
+  color: #1F71BC;
+}
+.rsvp .guest a i {
+  background: white;
+  padding: 5px;
+  border-radius: 50px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+}
+.rsvp .guest a i:hover {
+  transform: rotate(360deg);
+}
+.rsvp p {
+  font-weight: 300;
+}
+.rsvp textarea {
+  border-radius: 5px;
+  border: 1px solid #ededed;
+  padding: 15px 20px;
+  line-height: 1.4em;
+  width: 30%;
+  min-height: 150px;
+}
+
+/* Page :: The Wedding */
+
+.thewedding {
+  padding-bottom: 50px;
+}
+.thewedding table {
+  border-radius: 5px;
+  border: 1px solid #ededed;
+  box-sizing: border-box;
+  display: table;
+  width: 100%;
+}
+.thewedding tr {
+ width: 100%; 
+}
+.thewedding th {
+  font-weight: bold;
+}
+.thewedding td, .thewedding th{
+  padding: 10px 15px;
+  font-weight: normal;
+  color: #4f4f4f;
+  border: 0;
+}
+.thewedding tr:first-child {
+  border-bottom: 1px solid #efefef;
+}
+.thewedding tr:first-child th {
+  background: #525252;
+  color: white;
+}
+.thewedding tr:first-child th:first-child {
+  border-radius: 5px 0 0 0;
+}
+.thewedding tr:first-child th:last-child {
+  border-radius: 0 5px 0 0;
+}
+.thewedding td:first-child {
+  border-right: 1px solid #efefef;
+  text-align: center;
+}
+.thewedding tr:nth-child(2n+1):not(:first-child) {
+  background: #f8f8f8;
+}
+.thewedding h2 {
+  margin-bottom: 10px;
+}
+.thewedding h3 {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+/* Page :: Getting Here */
+.getting-here {
+  padding-bottom: 50px;
+}
+.getting-here  iframe {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.getting-here table {
+  margin-top: 20px;
+}
+
+/* Page :: Accomodation */
+.accomodation {
+  padding-bottom: 50px;
+}
+.accomodation iframe {
+  width: 100%;
+}
+.accomodation img {
+  width: 49%;
+  height: 300px;
+}
+.accomodation img:nth-child(2n) {
+  margin-left: 1%;
+  clear: right;
+}
+.accomodation img:nth-child(2n):after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+.accomodation h3 {
+  margin-top: 30px;
+}
+
+/* Page :: Gifts */
+.gifts {
+  padding-bottom: 80px;
+}
+.gifts ul {
+  list-style-type: none;
+}
+.gift .wrap {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+.gift .wrap .buttons {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.gift .wrap button {
+  margin: 0;
+  /* width: 40px; */
+  height: 40px;
+}
+.gift .wrap button:active {
+  transform: rotate(180deg);
+}
+.gift img {
+  width: 100%;
+}
+.gifts .pay, .ngdialog.ngdialog-theme-default button  {
+  padding: 20px;
+  color: #31A15B;
+  border-color: #31A15B;
+  margin: auto;
+  display: block;
+}
+.gifts .pay:hover, .ngdialog.ngdialog-theme-default button:hover {
+  background: #31A15B;
+  color: white;
+}
+.ngdialog.ngdialog-theme-default .ngdialog-content {
+  width: 50%;
+  font-size: 16px;
+  background: white;
+  padding: 20px 50px;
+  position: fixed;
+  left: 25%;
+  top: 15%;
+}
+.ngdialog.ngdialog-theme-default textarea {
+  display: block;
+  width: 100%;
+  height: 100px;
+  border-radius: 5px;
+  border: 1px solid #ededed;
+  padding: 15px 20px;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+.ngdialog.ngdialog-theme-default button {
+  padding: 10px;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+.ngdialog.ngdialog-theme-default ul {
+  list-style-type: none;
+}
+.ngdialog.ngdialog-theme-default li {
+  border: 1px solid #ededed;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.ngdialog.ngdialog-theme-default li b {
+  font-weight: normal;
+  color: #31A15B;
+  font-size: 18px;
+}
+.ngdialog.ngdialog-theme-default li .blue {
+  color: #1F71BC;
+}
+body.ngdialog-open {
+  overflow: visible;
+}
+
+/* Resp :: Tablet */
+@media (max-width: 750px) {
+  
+}
+
+/* Resp :: Mobile */
+@media (max-width: 750px){
+  body {
+    font-size: 14px;
+    padding-bottom: 50px;
+  }
+  h1 {
+    text-align: center;
+    line-height: 1.5em;
+  }
+  br {
+    display: none;
+  }
+  .welcome-hero {
+    text-align: center;
+  }
+  .accomodation img {
+    height: auto;
+    width: 100%;
+    margin: 0;
+  }
+  .accomodation img:nth-child(2n) {
+    margin: 0;
+  }
+  .ngdialog.ngdialog-theme-default {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .ngdialog.ngdialog-theme-default .ngdialog-content {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 14px;
+  }
+  body.ngdialog-open .view-container {
+    display: none;
+  }
+  .ngdialog-overlay {
+    background: white;
+  }
+  .header .default {
+    display: none;
+  }
+  .header .mobile {
+    font-size: 16px;
+    padding-top: 15px;
+    display: block;
+  }
+  .header .mobile button {
+    position: absolute;
+    right: 14px;
+    top: 10px;
+    font-size: 35px;
+    padding: 0;
+    margin: 0;
+    width: 35px;
+    height: 35px;
+    overflow: hidden;
+    line-height: 0;
+  }
+  .header .mobile button i {
+    margin: 0;
+    padding: 0;
+  }
+  .header .mobile > span {
+    font-size: 18px;
+    padding-left: 14px;
+    padding-bottom: 15px;
+    display: inline-block;
+  }
+  .header .mobile .burger {
+    list-style-type: none;
+    margin-top: 0px;
+    display: none;
+  }
+  .header .mobile .burger.visible {
+    display: block;
+    height: auto;
+  }
+  .header .mobile .burger li {
+    text-align: center;
+    padding: 0 14px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #FBCA98;
+  }
+  .header .mobile .burger li:first-child {
+    border-top: 1px solid #FBCA98;  
+  }
+  .header .mobile .burger li:last-child {
+    border: 0;
+  }
+  .header .mobile .burger li a {
+    margin: 0;
+    padding: 0;
+    display: block;
+    padding: 10px 0;
+    padding-bottom: 6px;
+  }
+}

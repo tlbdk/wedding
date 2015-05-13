@@ -1,0 +1,17 @@
+<div class="container rsvp">
+  <div class="row hero">
+    <div class="col w10/12 o1/12">
+      <h1>
+        Login
+      </h1>
+      <form ng-submit="login(key)">
+        <div>
+          <div ng-show="error">{{error}}</div>
+          <label for="key">Key: </label>
+          <input type="text" id="key" name="key" ng-model="key">
+        </div>
+        <button>Login</button>
+      </form>
+    </div>
+  </div>
+</div>

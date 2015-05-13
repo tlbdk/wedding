@@ -1,0 +1,10 @@
+{
+  "name": "invitation-generate",
+  "version": "0.0.1",
+  "dependencies": {
+    "mysql": "*",
+    "xmldom": "*",
+    "qr-image": "*",
+    "base64-stream": "*"
+  }
+}
