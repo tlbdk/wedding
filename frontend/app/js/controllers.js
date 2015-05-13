@@ -11,25 +11,16 @@ weddingControllers.controller('WelcomeCtrl', ['$scope', 'Invitation', function($
   $scope.invitation = Invitation.get();
 }]);
 
-weddingControllers.controller('LoginCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', '$routeParams', function($scope, $rootScope, $location, $auth, $http, $routeParams) {
+weddingControllers.controller('LoginCtrl', ['$scope', '$auth', '$routeParams', 'Authenticate', function($scope, $auth, $routeParams, Authenticate) {
   $auth.logout();
   $scope.login = function(key) {
-    $http({
-      method: 'POST',
-      url: 'http://192.168.10.6/api/auth/token',
-      data: $.param({key: key}),
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    Authenticate.login(key, function(token, error) {
+      if(!error) {
+        $auth.setToken(token);
+      } else {
+        $scope.error = error;
+      }
     })
-      .success(function(data, status, headers, config) {
-        if(data.hasOwnProperty('access_token')) {
-          $auth.setToken(data.access_token);
-        } else {
-          $scope.error = data.error;
-        }
-      })
-      .error(function(data, status, headers, config) {
-        $scope.error = "Login failed with unknown error";
-      });
   };
   
   if($routeParams['key']) {
