@@ -1,15 +1,10 @@
 'use strict';
 
 /* Services */
-
-var baseurl = "http://localhost:8080";
-//var baseurl = "http://192.168.10.6/api";
-
-
 var weddingServices = angular.module('weddingServices', ['ngResource']);
 
-weddingServices.factory('RSVP', ['$resource', function($resource){
-  return $resource(baseurl + '/rsvp/:id', { id: '@id' }, {
+weddingServices.factory('RSVP', ['$resource', 'Configuration', function($resource, Configuration){
+  return $resource(Configuration.API + '/rsvp/:id', { id: '@id' }, {
      update: {
       method: 'PUT',
     }
@@ -18,19 +13,19 @@ weddingServices.factory('RSVP', ['$resource', function($resource){
   });
 }]);
 
-weddingServices.factory('Invitation', ['$resource', function($resource){
-  return $resource(baseurl + '/invitation');
+weddingServices.factory('Invitation', ['$resource', 'Configuration', function($resource, Configuration){
+  return $resource(Configuration.API + '/invitation');
 }]);
 
-weddingServices.factory('Pay', ['$resource', function($resource){
-  return $resource(baseurl + '/pay');
+weddingServices.factory('Pay', ['$resource', 'Configuration', function($resource, Configuration){
+  return $resource(Configuration.API + '/pay');
 }]);
 
-weddingServices.service('Authenticate', ['$http', function($http){
+weddingServices.service('Authenticate', ['$http', 'Configuration', function($http, Configuration){
   this.login = function (key, cb) {
     $http({
       method: 'POST',
-      url: baseurl + '/auth/token',
+      url: Configuration.API + '/auth/token',
       data: $.param({ key: key }),
       headers: {'Content-Type': 'application/x-www-form-urlencoded'}
     })
@@ -48,3 +43,11 @@ weddingServices.service('Authenticate', ['$http', function($http){
     });
   }
 }]);
+
+weddingServices.service("Configuration", function() {
+  if (window.location.host.match(/^127\.0\.0\.1/)) {
+    return this.API = 'http://localhost:8080';
+  } else {
+    return this.API = 'https://www.married.dk/api/';
+  }
+});

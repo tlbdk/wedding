@@ -8,7 +8,7 @@ var weddingApp = angular.module('weddingApp', [
   'satellizer',
   'weddingControllers',
   'weddingFilters',
-  'weddingServices'
+  'weddingServices',
 ]);
 
 weddingApp.config(['$routeProvider',

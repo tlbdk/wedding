@@ -310,8 +310,14 @@ button.green:hover {
   min-height: 150px;
 }
 
-/* Page :: The Wedding */
+.rsvp input {
+  border-radius: 5px;
+  border: 1px solid #ededed;
+  padding: 15px 20px;
+  width: 30%;
+}
 
+/* Page :: The Wedding */
 .thewedding {
   padding-bottom: 50px;
 }

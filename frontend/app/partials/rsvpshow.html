@@ -33,12 +33,16 @@
         </li>
         <li>
             <p><label for="guest_food">Food limitations</label></p>
-            <textarea id="guest_food" type="text" ng-model="guest.food"></textarea>
+            <textarea id="guest_food" type="text" ng-model="guest.food" ng-disabled="guest.coming === false"></textarea>
         </li>
         <li>
             <p><label for="guest_comments">Comments</label></p>
-            <textarea id="guest_comments" type="text" ng-model="guest.comments"></textarea>
+            <textarea id="guest_comments" type="text" ng-model="guest.comments" ng-disabled="guest.coming === false"></textarea>
         </li>
+        <li>
+            <p><label for="guest_comments">Your e-mail address</label></p>
+            <input size="50%" id="guest_email" type="text" ng-model="guest.email" ng-disabled="guest.coming === false"></textarea>
+        </li> 
       </ul>
       </div>
       <div>

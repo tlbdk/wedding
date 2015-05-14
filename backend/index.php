@@ -117,7 +117,7 @@ $app->options('/invitation', function() use ($app) {
 });
 
 $app->get('/rsvp', function () use ($app, $pdo) {
-    $stmt = $pdo->prepare("SELECT id, name, coming, transportation, children, food, comments FROM guest WHERE invitation_id = :invitation_id");
+    $stmt = $pdo->prepare("SELECT id, name, coming, transportation, children, food, comments, email FROM guest WHERE invitation_id = :invitation_id");
     $stmt->execute([":invitation_id" => $app->jwt->sub]);
     $stmt->setFetchMode(PDO::FETCH_CLASS, 'Guest');
 
@@ -140,7 +140,7 @@ $app->get('/rsvp', function () use ($app, $pdo) {
 });
 
 $app->get('/rsvp/:id', function ($id) use($app, $pdo) {
-    $stmt = $pdo->prepare("SELECT id, name, coming, transportation, children, food, comments FROM guest WHERE id = :id AND invitation_id = :invitation_id");
+    $stmt = $pdo->prepare("SELECT id, name, coming, transportation, children, food, comments, email FROM guest WHERE id = :id AND invitation_id = :invitation_id");
     $stmt->execute(array(':id' => $id, ":invitation_id" => $app->jwt->sub));
     $stmt->setFetchMode(PDO::FETCH_CLASS, 'Guest');
     $guest = $stmt->fetch();
@@ -162,8 +162,8 @@ $app->put('/rsvp/:id', function ($id) use($app, $pdo) {
     $json = $app->request->getBody();
     $data = json_decode($json, true);
     //$stmt = $pdo->prepare("UPDATE guests SET coming = :coming WHERE id = :id");
-    $stmt = $pdo->prepare("UPDATE guest SET coming = :coming, transportation = :transportation, children = :children, food = :food, comments = :comments WHERE id = :id AND invitation_id = :invitation_id");
-    $stmt->execute(array(':id' => $id, ':coming' => $data['coming'], ':transportation' => $data['transportation'], ':children' => $data['children'], ':food' => $data['food'], ':comments' =>  $data['comments'],  ":invitation_id" => $app->jwt->sub));
+    $stmt = $pdo->prepare("UPDATE guest SET coming = :coming, transportation = :transportation, children = :children, food = :food, comments = :comments, email = :email WHERE id = :id AND invitation_id = :invitation_id");
+    $stmt->execute(array(':id' => $id, ':coming' => $data['coming'], ':transportation' => $data['transportation'], ':children' => $data['children'], ':food' => $data['food'], ':comments' =>  $data['comments'], ':email' =>  $data['email'],  ":invitation_id" => $app->jwt->sub));
 
     $response = $app->response;
     $response['Content-Type'] = 'application/json';
@@ -230,4 +230,5 @@ class Guest {
     public $children;
     public $food;
     public $comments;
+    public $email;
 }
