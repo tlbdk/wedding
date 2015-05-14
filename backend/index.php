@@ -11,6 +11,7 @@ $database_user = 'married';
 $pdo = new PDO("mysql:host=localhost;dbname=wedding", $database_user, '', array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_STRINGIFY_FETCHES => false));
 // Make sure we are in UTC as mysql will convert timestamp from local time if this is not set
 $pdo->query("SET SESSION time_zone = '+00:00'");
+$pdo->query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
 
 $app = new \Slim\Slim();
 $app->log->setEnabled(true);
@@ -123,9 +124,10 @@ $app->get('/rsvp', function () use ($app, $pdo) {
     $stmt = $pdo->prepare("SELECT id, name, coming, transportation, children, food, comments, email FROM guest WHERE invitation_id = :invitation_id");
     $stmt->execute([":invitation_id" => $app->jwt->sub]);
     $stmt->setFetchMode(PDO::FETCH_CLASS, 'Guest');
-
+    
     $results = [];
     while($guest = $stmt->fetch()) {
+        //$app->log->info($guest);
         // Fix type mapping
         $guest->transportation = $guest->transportation ? true : false;
         $guest->coming = $guest->coming === null ? null : ($guest->coming ? true : false);
