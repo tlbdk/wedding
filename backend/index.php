@@ -4,9 +4,10 @@ require "inc/jwt.php";
 use \Slim\Middleware\JwtAuthentication\RequestPathRule;
 use \Slim\Middleware\JwtAuthentication\RequestMethodRule;
 
-$database_user = 'married';
-
-//if($processUser = posix_getpwuid(posix_geteuid());)
+$database_user = 'root';
+if(posix_getpwuid(posix_geteuid())['name'] === 'married') {
+  $database_user = 'married';
+}
 
 $pdo = new PDO("mysql:host=localhost;dbname=wedding", $database_user, '', array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_STRINGIFY_FETCHES => false));
 // Make sure we are in UTC as mysql will convert timestamp from local time if this is not set
@@ -16,7 +17,7 @@ $pdo->query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
 $app = new \Slim\Slim();
 $app->log->setEnabled(true);
 
-// TODO: Configuration 
+// TODO: Configuration
 $oauth_server = [
   "key" => "12345678",
   "iss" => "http://www.married.dk/auth/",
@@ -47,13 +48,13 @@ $app->post('/auth/token', function () use ($app, $pdo, $oauth_server) {
   $response_type = $app->request->post('response_type');
   $redirect_uri = $app->request->post('redirect_uri'); */
   $key = $app->request->post('key');
-  
+
   $stmt = $pdo->prepare("SELECT id, title FROM invitation WHERE `key` = :key");
   if (!$stmt) {
     echo "\nPDO::errorInfo():\n";
     print_r($pdo->errorInfo());
   }
-  
+
   $stmt->execute(array(':key' => $key));
   $stmt->setFetchMode(PDO::FETCH_CLASS, 'Invitation');
   $invitation = $stmt->fetch();
@@ -76,11 +77,11 @@ $app->post('/auth/token', function () use ($app, $pdo, $oauth_server) {
             "sub" => $invitation->id
         ],
     $oauth_server["key"]);
-    
+
     $json = json_encode([
       "access_token" => $jwt_token
     ], JSON_PRETTY_PRINT);
-    
+
   } else {
     $json = json_encode([
       "error" => "Key not found"
@@ -124,7 +125,7 @@ $app->get('/rsvp', function () use ($app, $pdo) {
     $stmt = $pdo->prepare("SELECT id, name, coming, transportation, children, food, comments, email FROM guest WHERE invitation_id = :invitation_id");
     $stmt->execute([":invitation_id" => $app->jwt->sub]);
     $stmt->setFetchMode(PDO::FETCH_CLASS, 'Guest');
-    
+
     $results = [];
     while($guest = $stmt->fetch()) {
         //$app->log->info($guest);
@@ -194,16 +195,16 @@ $app->post('/pay', function () use($app, $pdo) {
   $stmt = $pdo->prepare("INSERT INTO pay (title, amount, address, invitation_id) VALUES(:title, :amount, :address, :invitation_id)");
   foreach($data as $gift) {
     $invitation_id = $app->jwt->sub;
-  
+
     if($gift['amount'] > 0) {
       if(!isset($gift['address'])) {
         $gift['address'] = null;
       }
-      
+
       //file_put_contents("/tmp/php-debug.txt",  var_export($gift, true));
-      
-      // Update database 
-      $stmt->execute(array(':title' => $gift['title'], ':amount' => $gift['amount'], ':address' => $gift['address'], 
+
+      // Update database
+      $stmt->execute(array(':title' => $gift['title'], ':amount' => $gift['amount'], ':address' => $gift['address'],
                          ':invitation_id' => $invitation_id));
     }
   }
