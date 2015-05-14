@@ -4,8 +4,11 @@ require "inc/jwt.php";
 use \Slim\Middleware\JwtAuthentication\RequestPathRule;
 use \Slim\Middleware\JwtAuthentication\RequestMethodRule;
 
+$database_user = 'married';
 
-$pdo = new PDO("mysql:host=localhost;dbname=wedding", 'root', '', array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_STRINGIFY_FETCHES => false));
+//if($processUser = posix_getpwuid(posix_geteuid());)
+
+$pdo = new PDO("mysql:host=localhost;dbname=wedding", $database_user, '', array(PDO::ATTR_EMULATE_PREPARES => false, PDO::ATTR_STRINGIFY_FETCHES => false));
 // Make sure we are in UTC as mysql will convert timestamp from local time if this is not set
 $pdo->query("SET SESSION time_zone = '+00:00'");
 

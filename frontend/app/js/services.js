@@ -48,6 +48,6 @@ weddingServices.service("Configuration", function() {
   if (window.location.host.match(/^127\.0\.0\.1/)) {
     return this.API = 'http://localhost:8080';
   } else {
-    return this.API = 'https://www.married.dk/api/';
+    return this.API = 'https://www.married.dk/api';
   }
 });
