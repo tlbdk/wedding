@@ -13,10 +13,15 @@ if (($handle = fopen("/home/tlb/Downloads/Guest list - Sheet1.csv", "r")) !== FA
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
       if($row++ === 1) { continue; }
       
-      if(!empty($data[6]) and $data[6] !== "TOTAL") {
+      if(!empty($data[1]) and !empty($data[6]) and !empty($data[7]) and $data[6] !== "TOTAL") {
         $title = $data[6];
         $language = $data[7];
-        $key = generateRandomString(8);
+        $key = $data[13];
+        
+        if(empty($key)) {
+          echo "missing key in row $row : $title\n";
+          var_dump($data);
+        }
         
         echo "Create invitation: $title\n";
         $stmt = $pdo->prepare("INSERT INTO invitation (`title`, `key`, `language`) VALUES(:title, :key, :language)");
