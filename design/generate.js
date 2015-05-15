@@ -55,7 +55,7 @@ function generateInvitation(template, outfile, fields) {
 
   var qe = doc.getElementById(fields['link'][0]);
   var qrcode_stream = qr.image(fields['link'][1], { 
-    type: 'png', ec_level: 'H', margin: 0, parse_url: false, size: 20,
+    type: 'png', ec_level: 'H', margin: 0, parse_url: false, size: 100,
     customize: function(bitmap) {
       console.log(bitmap.data.length);
       for(var i = 0; i < bitmap.data.length; i++) {
@@ -71,5 +71,6 @@ function generateInvitation(template, outfile, fields) {
     qe.setAttribute("xlink:href", "data:" + "image/png" + ";base64," + qrcode_base64);  
     // Save the new svg
     fs.writeFileSync(outfile, xmls.serializeToString(doc), "utf8");
+    // TODO: Convert to PDF, remember to convert to paths for the fonts
   });
 }
