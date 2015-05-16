@@ -78,7 +78,7 @@ weddingApp.config(['$authProvider', function($authProvider) {
 
 weddingApp.run(['$rootScope', '$window', '$location', '$auth', function($rootScope, $window, $location, $auth) {  
   $rootScope.$on( "$routeChangeStart", function(event, next, current) {
-    if (!$auth.isAuthenticated()) {      
+    if (!$auth.isAuthenticated() || window.location.hash.search(/\?key=/) > 0) {      
       if (next.templateUrl !== "partials/login.html") {
         // no logged user, redirect to /login
         $location.path("/login");
