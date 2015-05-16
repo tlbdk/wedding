@@ -192,19 +192,19 @@ $app->options('/rsvp/:id', function() use ($app) {
 $app->post('/pay', function () use($app, $pdo) {
   $json = $app->request->getBody();
   $data = json_decode($json, true);
-  $stmt = $pdo->prepare("INSERT INTO pay (title, amount, address, invitation_id) VALUES(:title, :amount, :address, :invitation_id)");
+  $stmt = $pdo->prepare("INSERT INTO pay (title, amount, comment, invitation_id) VALUES(:title, :amount, :comment, :invitation_id)");
   foreach($data as $gift) {
     $invitation_id = $app->jwt->sub;
 
     if($gift['amount'] > 0) {
-      if(!isset($gift['address'])) {
-        $gift['address'] = null;
+      if(!isset($gift['comment'])) {
+        $gift['comment'] = null;
       }
 
       //file_put_contents("/tmp/php-debug.txt",  var_export($gift, true));
 
       // Update database
-      $stmt->execute(array(':title' => $gift['title'], ':amount' => $gift['amount'], ':address' => $gift['address'],
+      $stmt->execute(array(':title' => $gift['title'], ':amount' => $gift['amount'], ':comment' => $gift['comment'],
                          ':invitation_id' => $invitation_id));
     }
   }

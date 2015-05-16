@@ -83,7 +83,7 @@ weddingControllers.controller('GiftsCtrl', ['$scope', '$location', 'Pay', 'ngDia
     ngDialog.open({ template: 'pay_confirmation', scope: $scope });
   }
   
-  $scope.pay = function (gifts, address, cb) {
+  $scope.pay = function (gifts, comment, cb) {
     // Remove gifts with zero amount
     var gifts = gifts.filter(function(gift) {
       return gift.amount > 0;
@@ -92,7 +92,7 @@ weddingControllers.controller('GiftsCtrl', ['$scope', '$location', 'Pay', 'ngDia
     // Add e-mail to all gifts and post
     var payload = gifts.map(function(gift) {
       var clone = angular.copy(gift);
-      clone.address = address;
+      clone.comment = comment;
       return clone;
     });
 

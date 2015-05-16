@@ -8,7 +8,7 @@ CREATE TABLE `invitation` (
   `title` varchar(255) NOT NULL,
   `key` varchar(255) NOT NULL,
   `language` varchar(255) NOT NULL,
-  `conjugation` varchar(255) NOT NULL,
+  `conjugation` varchar(255),
   `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
@@ -32,7 +32,7 @@ CREATE TABLE `pay` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `amount` int(11) NOT NULL,
-  `address` text,
+  `comment` text,
   `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `invitation_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
