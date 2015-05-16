@@ -14,7 +14,7 @@ connection.connect();
 connection.query('SELECT * from invitation', function(err, rows, fields) {
   if (!err) {
     var pdfs = [];
-    async.forEach(rows, function(row, callback){
+    async.eachLimit(rows, 4, function(row, callback){
       console.log(row['title']);
       if(row['language'] === 'English') { 
         generateInvitation("invitation_en.svg", "tmp/" + row['id'], {
