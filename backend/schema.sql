@@ -8,6 +8,7 @@ CREATE TABLE `invitation` (
   `title` varchar(255) NOT NULL,
   `key` varchar(255) NOT NULL,
   `language` varchar(255) NOT NULL,
+  `conjugation` varchar(255) NOT NULL,
   `updated` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

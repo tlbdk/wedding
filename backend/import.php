@@ -16,6 +16,7 @@ if (($handle = fopen("/home/tlb/Downloads/Guest list - Sheet1.csv", "r")) !== FA
       if(!empty($data[1]) and !empty($data[6]) and !empty($data[7]) and $data[6] !== "TOTAL") {
         $title = $data[6];
         $language = $data[7];
+        $conjugation = $data[8];
         $key = $data[13];
         
         if(empty($key)) {
@@ -24,12 +25,12 @@ if (($handle = fopen("/home/tlb/Downloads/Guest list - Sheet1.csv", "r")) !== FA
         }
         
         echo "Create invitation: $title\n";
-        $stmt = $pdo->prepare("INSERT INTO invitation (`title`, `key`, `language`) VALUES(:title, :key, :language)");
+        $stmt = $pdo->prepare("INSERT INTO invitation (`title`, `key`, `language`, `conjugation`) VALUES(:title, :key, :language, :conjugation)");
         if (!$stmt) {
           echo "\nPDO::errorInfo():\n";
           print_r($pdo->errorInfo());
         }
-        $stmt->execute([":title" => $title, ":key" => $key, ":language" => $language ]);
+        $stmt->execute([":title" => $title, ":key" => $key, ":language" => $language,  ":conjugation" => $conjugation]);
         $invitation_id = $pdo->lastInsertId();
           
         for($i = 2; $i<6; $i++) {
