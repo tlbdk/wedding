@@ -16,7 +16,7 @@ if (($handle = fopen("/home/tlb/Downloads/Guest list - Sheet1.csv", "r")) !== FA
       if(!empty($data[1]) and !empty($data[6]) and !empty($data[7]) and $data[6] !== "TOTAL") {
         $title = $data[6];
         $language = $data[7];
-        $conjugation = $data[8];
+        $conjugation = $data[8] ? $data[8] : null;
         $key = $data[13];
         
         if(empty($key)) {
@@ -45,6 +45,8 @@ if (($handle = fopen("/home/tlb/Downloads/Guest list - Sheet1.csv", "r")) !== FA
             $stmt->execute([ ":name" => $name, ":invitation_id" => $invitation_id ]);
           }
         }
+        //var_dump($data);
+      } else {
         //var_dump($data);
       }
     }
