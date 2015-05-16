@@ -42,7 +42,7 @@
      inkscape:document-units="px"
      showgrid="false"
      inkscape:zoom="2.3786088"
-     inkscape:cx="999.89677"
+     inkscape:cx="936.62449"
      inkscape:cy="430.17133"
      inkscape:window-x="81"
      inkscape:window-y="24"
@@ -484,7 +484,8 @@
        style="fill:#aec193;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="path244"
        inkscape:connector-curvature="0" /><g
-       id="g246"><g
+       id="g246"
+       transform="matrix(0.79266366,0,0,0.792666,160.49147,55.907405)"><g
          id="g248"
          clip-path="url(#clipPath250)"><g
            id="g254"

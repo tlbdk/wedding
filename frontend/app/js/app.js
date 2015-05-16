@@ -85,4 +85,7 @@ weddingApp.run(['$rootScope', '$window', '$location', '$auth', function($rootSco
       }
     }
   });
+  $rootScope.logout = function() {
+    $auth.logout();
+  }
 }]);

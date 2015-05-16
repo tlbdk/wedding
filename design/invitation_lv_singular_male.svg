@@ -41,9 +41,9 @@
      id="namedview4"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="1.1893044"
-     inkscape:cx="978.6485"
-     inkscape:cy="507.66265"
+     inkscape:zoom="3.3638608"
+     inkscape:cx="1006.9587"
+     inkscape:cy="349.66029"
      inkscape:window-x="81"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -484,7 +484,8 @@
        style="fill:#aec193;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="path244"
        inkscape:connector-curvature="0" /><g
-       id="g246"><g
+       id="g246"
+       transform="matrix(0.79266366,0,0,0.792666,159.74337,57.233153)"><g
          id="g248"
          clip-path="url(#clipPath250)"><g
            id="g254"

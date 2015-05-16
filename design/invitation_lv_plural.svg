@@ -41,9 +41,9 @@
      id="namedview4"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="1041.8839"
-     inkscape:cy="448.98333"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="991.27878"
+     inkscape:cy="369.18091"
      inkscape:window-x="81"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -480,7 +480,8 @@
        style="fill:#aec193;fill-opacity:1;fill-rule:nonzero;stroke:none"
        id="path242"
        inkscape:connector-curvature="0" /><g
-       id="g244"><g
+       id="g244"
+       transform="matrix(0.79266366,0,0,0.792666,159.76816,56.252371)"><g
          id="g246"
          clip-path="url(#clipPath248)"><g
            id="g252"
@@ -629,7 +630,7 @@
          id="tspan4292"
          x="515.79071"
          y="-222.05878"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Champagne &amp; Limousines';-inkscape-font-specification:'Champagne &amp; Limousines Bold';fill:#898a89;fill-opacity:1;stroke-width:0.33924276px"></tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Champagne &amp; Limousines';-inkscape-font-specification:'Champagne &amp; Limousines Bold';fill:#898a89;fill-opacity:1;stroke-width:0.33924276px" /><tspan
          sodipodi:role="line"
          x="515.79071"
          y="-205.09663"

@@ -1,6 +1,17 @@
 <?php
 require 'vendor/autoload.php';
 require "inc/jwt.php";
+
+if(file_exists("config.php")) {
+  require 'config.php';
+} else {
+  $oauth_server = [
+    "key" => "12345678",
+    "iss" => "http://www.married.dk/auth/",
+    "aud" => "http://www.married.dk/api/"
+  ];
+}
+
 use \Slim\Middleware\JwtAuthentication\RequestPathRule;
 use \Slim\Middleware\JwtAuthentication\RequestMethodRule;
 
@@ -16,13 +27,6 @@ $pdo->query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
 
 $app = new \Slim\Slim();
 $app->log->setEnabled(true);
-
-// TODO: Configuration
-$oauth_server = [
-  "key" => "12345678",
-  "iss" => "http://www.married.dk/auth/",
-  "aud" => "http://www.married.dk/api/"
-];
 
 $app->add(new \Slim\Middleware\JwtAuthentication([
     "secure" => false,
@@ -71,8 +75,8 @@ $app->post('/auth/token', function () use ($app, $pdo, $oauth_server) {
             "iss" => $oauth_server["iss"],
             "aud" => $oauth_server["aud"],
             "iat" => time(),
-            "nbf" => time() - 60* 5, // 5 minutes skrew
-            "exp" => time() + 60 * 60 * 8, // expires in 8 hours
+            "nbf" => time() - 60 * 5, // 5 minutes skrew
+            "exp" => time() + 60 * 60 * 2, // expires in 8 hours
             // User information
             "sub" => $invitation->id
         ],
@@ -84,7 +88,7 @@ $app->post('/auth/token', function () use ($app, $pdo, $oauth_server) {
 
   } else {
     $json = json_encode([
-      "error" => "Key not found"
+      "error" => "Code not found"
     ], JSON_PRETTY_PRINT);
   }
    // Create response
