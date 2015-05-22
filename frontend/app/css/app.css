@@ -17,6 +17,9 @@ body {
 div.view-frame {
   margin-top: 0;
 }
+img {
+  max-width: 100%;
+}
 
 /* Typography */
 h1 {
@@ -43,6 +46,18 @@ h3 {
 .w-light {
   font-weight: lighter;
 }
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
 
 /* Animatable */
 button, a, a span, i { 
@@ -210,13 +225,15 @@ button.green:hover {
   text-align: right;
   width: 100%;
 }
-.header .menu li {
+.header .menu li, .header .menu button {
   display: inline-block;
   cursor: pointer;
   margin-left: 10px;
 }
-.header .menu li:hover {
+.header .menu li:hover, .header .menu button:hover {
   color: #ffb55e;
+  background: white;
+  color: #1F71BC;
 }
 .header .birds {
   width: 100px;
@@ -308,13 +325,17 @@ button.green:hover {
   line-height: 1.4em;
   width: 30%;
   min-height: 150px;
+  box-sizing: border-box;
+  font-size: 1em;
 }
 
 .rsvp input {
   border-radius: 5px;
   border: 1px solid #ededed;
-  padding: 15px 20px;
+  padding: 15px 15px;
   width: 30%;
+  font-size: 1em;
+  box-sizing: border-box;
 }
 
 /* Page :: The Wedding */
@@ -380,6 +401,14 @@ button.green:hover {
 .getting-here table {
   margin-top: 20px;
 }
+.getting-here img {
+  width: 49%;
+  height: 300px;
+  float: left;
+}
+.getting-here img:nth-child(2n) {
+  margin-left: 1%;
+}
 
 /* Page :: Accomodation */
 .accomodation {
@@ -391,6 +420,7 @@ button.green:hover {
 .accomodation img {
   width: 49%;
   height: 300px;
+  float:left;
 }
 .accomodation img:nth-child(2n) {
   margin-left: 1%;
@@ -407,6 +437,9 @@ button.green:hover {
 .accomodation h3 {
   margin-top: 30px;
 }
+
+/* Page :: Who are these people? */
+
 
 /* Page :: Gifts */
 .gifts {
@@ -504,6 +537,15 @@ body.ngdialog-open {
 
 /* Resp :: Mobile */
 @media (max-width: 750px){
+  
+  /* Grid changes */
+  .m\3Ao1\/12 {
+    margin-left: 6.33%;
+  }
+  .m\3Aw10\/12 {
+    width: 87.333%;
+  }
+  
   body {
     font-size: 14px;
     padding-bottom: 50px;
@@ -556,7 +598,7 @@ body.ngdialog-open {
     padding-top: 15px;
     display: block;
   }
-  .header .mobile button {
+  .header .mobile button.burger {
     position: absolute;
     right: 14px;
     top: 10px;
@@ -568,17 +610,18 @@ body.ngdialog-open {
     overflow: hidden;
     line-height: 0;
   }
-  .header .mobile button i {
+  .header .mobile button.burger i {
     margin: 0;
     padding: 0;
   }
-  .header .mobile > span {
+  .header .mobile > a {
     font-size: 18px;
     padding-left: 14px;
     padding-bottom: 15px;
     display: inline-block;
+    margin-top: 0;
   }
-  .header .mobile .burger {
+  .header .mobile ul.burger {
     list-style-type: none;
     margin-top: 0px;
     display: none;
@@ -599,11 +642,21 @@ body.ngdialog-open {
   .header .mobile .burger li:last-child {
     border: 0;
   }
-  .header .mobile .burger li a {
+  .header .mobile .burger li a,
+  .header .mobile .burger li button {
     margin: 0;
     padding: 0;
     display: block;
     padding: 10px 0;
     padding-bottom: 6px;
+    width: 100%;
+    background: white;
+    text-align: center;
+  }
+  .header .mobile .burger li button:hover {
+    color: #1F71BC
+  }
+  .rsvp textarea, .rsvp input {
+    width: 100%;
   }
 }
