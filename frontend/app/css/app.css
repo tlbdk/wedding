@@ -422,7 +422,7 @@ button.green:hover {
 }
 .getting-here img {
   width: 49%;
-  height: 300px;
+  /* height: 300px; */
   float: left;
 }
 .getting-here img:nth-child(2n) {
