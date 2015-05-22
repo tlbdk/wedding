@@ -7,8 +7,13 @@
       <form ng-submit="login(key)">
         <div>
           <div ng-show="error">{{error}}</div>
-          <label for="key">Code: </label>
-          <input type="text" id="key" name="key" ng-model="key">
+          
+          <div>
+            <label for="key">Your very own secret code / Slepenais kods: </label>
+          </div>
+          <div>
+            <input type="text" id="key" name="key" ng-model="key">
+          </div>
         </div>
         <button>Login</button>
       </form>
