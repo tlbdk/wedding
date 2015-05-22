@@ -487,8 +487,7 @@ button.green:hover {
 .gift .wrap {
   position: relative;
   display: inline-block;
-  width: 100%;
-  height: 200px;
+  width: auto;
   overflow: hidden;
 }
 .gift .wrap .buttons {
