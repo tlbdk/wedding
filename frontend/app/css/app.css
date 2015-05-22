@@ -507,7 +507,8 @@ button.green:hover {
   transform: rotate(180deg);
 }
 .gift img {
-  width: 100%;
+  /* width: 100%; */
+  width: 500px;
 }
 .ngdialog.ngdialog-theme-default {
   margin: 0;
