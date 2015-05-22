@@ -252,7 +252,7 @@ button.green:hover {
   height: 100px;
   position: absolute;
   left: 22%;
-  top: -4px;
+  top: 3px;
 }
 
 /* Page :: Welcome */
@@ -438,8 +438,8 @@ button.green:hover {
 }
 .accomodation img {
   width: 49%;
-  height: 300px;
   float:left;
+  margin-top: 1%;
 }
 .accomodation img:nth-child(2n) {
   margin-left: 1%;
@@ -459,12 +459,13 @@ button.green:hover {
 
 /* Page :: Who are these people? */
 .whoarethesepeople img {
-  float: left;
   clear: right;
   margin: 0 10px;
 }
-.whoarethesepeople .col > div:first-of-type img:nth-child(2) {
-  float: right;
+.whoarethesepeople .images {
+  margin: auto;
+  display: block;
+  text-align: center;
 }
 .whoarethesepeople p {
   margin-bottom: 20px;
