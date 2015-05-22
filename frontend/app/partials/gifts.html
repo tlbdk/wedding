@@ -26,7 +26,7 @@
     </div>
   </div>
   <script type="text/ng-template" id="pay_confirmation">
-      <h2>Payment methods</h2>
+    <h2>Payment methods</h2>
     <p>Please make a transfer of <b>{{total}} EUR</b> using one of the following payment methods</p>
       <ul>
         <li>
@@ -51,7 +51,9 @@
       </ul>
       <p>Send your wedding greatings</p>
       <textarea id="gift_comment" type="text" ng-model="comment"></textarea>
-      <button ng-click="pay(gifts, comment, closeThisDialog)" >Confirm</button>
-      <button class="red small" ng-click="closeThisDialog()" >Cancel</button>
+      <div class="buttons">
+        <button ng-click="pay(gifts, comment, closeThisDialog)" >Confirm</button>
+        <button class="red small" ng-click="closeThisDialog()" >Cancel</button>
+      </div>
   </script>
 </div>

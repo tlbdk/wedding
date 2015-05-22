@@ -4,7 +4,7 @@
 
 /* General */
 html, body {
-  height: 100%;
+/*  height: 100%;*/
 }
 body {
   font-weight: 300;
@@ -14,11 +14,23 @@ body {
   color: #3f3f3f;
   -webkit-transform: translate3d(0,0,0);
 }
-div.view-frame {
-  margin-top: 0;
-}
 img {
   max-width: 100%;
+}
+.view-container,
+.view-frame > div,
+.ngdialog-overlay,
+div.view-frame {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.ngdialog-overlay {
+  width: 100%;
+  height: 100%;
+}
+
+.container:not(.header) {
+  padding-bottom: 10%;
 }
 
 /* Typography */
@@ -266,6 +278,15 @@ button.green:hover {
 .welcome-hero > div:not(.hero) h2 {
 	margin-top: 30px;
 }
+.welcome-hero .whoarethesepeople h2 {
+  text-align: center;
+}
+.welcome-hero .images img {
+  width: 65%;
+  margin: auto;
+  margin-top: 40px;
+  display: block;
+}
 
 /* Page :: RSVP */
 
@@ -287,7 +308,6 @@ button.green:hover {
 .rsvp .guest {
   border: 0;
   display: inline-block;
-  padding: 10px 15px;
   background: white;
   min-width: 40%;
   position: relative;
@@ -296,7 +316,9 @@ button.green:hover {
 }
 .rsvp .guest a span {
   color: #4f4f4f;
-  font-weight: normal
+  font-weight: normal;
+  display: block;
+  padding: 10px 15px;
 }
 .rsvp .guest a:hover span {
   color: #1F71BC;
@@ -309,7 +331,7 @@ button.green:hover {
   height: 20px;
   text-align: center;
   position: absolute;
-  top: 6px;
+  top: 10px;
   right: 6px;
 }
 .rsvp .guest a i:hover {
@@ -390,9 +412,6 @@ button.green:hover {
 }
 
 /* Page :: Getting Here */
-.getting-here {
-  padding-bottom: 50px;
-}
 .getting-here  iframe {
   width: 100%;
   border-radius: 5px;
@@ -439,7 +458,23 @@ button.green:hover {
 }
 
 /* Page :: Who are these people? */
-
+.whoarethesepeople img {
+  float: left;
+  clear: right;
+  margin: 0 10px;
+}
+.whoarethesepeople .col > div:first-of-type img:nth-child(2) {
+  float: right;
+}
+.whoarethesepeople p {
+  margin-bottom: 20px;
+}
+.whoarethesepeople .trio img {
+  float: left;
+  width: 32.83%;
+  margin-right: 0.5%;
+  margin-left: 0;
+}
 
 /* Page :: Gifts */
 .gifts {
@@ -474,6 +509,10 @@ button.green:hover {
 .gift img {
   width: 100%;
 }
+.ngdialog.ngdialog-theme-default {
+  margin: 0;
+  padding: 0;
+}
 .gifts .pay, .ngdialog.ngdialog-theme-default button  {
   padding: 20px;
   color: #31A15B;
@@ -484,6 +523,21 @@ button.green:hover {
 .gifts .pay:hover, .ngdialog.ngdialog-theme-default button:hover {
   background: #31A15B;
   color: white;
+}
+.ngdialog.ngdialog-theme-default button.red {
+  color: red;
+  border-color: red;
+}
+.ngdialog.ngdialog-theme-default button.red:hover {
+  background: red;
+  color: white;
+}
+.ngdialog.ngdialog-theme-default button {
+  display: inline-block;
+  margin: 0;
+}
+.ngdialog.ngdialog-theme-default .buttons {
+  text-align: center;
 }
 .ngdialog.ngdialog-theme-default .ngdialog-content {
   width: 50%;
@@ -659,4 +713,6 @@ body.ngdialog-open {
   .rsvp textarea, .rsvp input {
     width: 100%;
   }
+  .rsvp .guest {
+    width: 100%;
 }
