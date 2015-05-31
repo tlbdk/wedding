@@ -4,7 +4,7 @@
 
 /* General */
 html, body {
-/*  height: 100%;*/
+  height: 100%; 
 }
 body {
   font-weight: 300;
@@ -25,8 +25,11 @@ div.view-frame {
   margin-bottom: 0;
 }
 .ngdialog-overlay {
+ height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
   width: 100%;
-  height: 100%;
 }
 
 .container:not(.header) {
@@ -512,7 +515,7 @@ button.green:hover {
 }
 .ngdialog.ngdialog-theme-default {
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }
 .gifts .pay, .ngdialog.ngdialog-theme-default button  {
   padding: 20px;
@@ -545,9 +548,9 @@ button.green:hover {
   font-size: 16px;
   background: white;
   padding: 20px 50px;
-  position: fixed;
-  left: 25%;
-  top: 15%;
+ /* position: fixed; */
+  /*left: 25%; */
+  /* top: 15%; */
 }
 .ngdialog.ngdialog-theme-default textarea {
   display: block;
@@ -641,9 +644,6 @@ body.ngdialog-open {
   }
   body.ngdialog-open .view-container {
     display: none;
-  }
-  .ngdialog-overlay {
-    background: white;
   }
   .header .default {
     display: none;
