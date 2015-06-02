@@ -58,6 +58,8 @@ $app->post('/auth/token', function () use ($app, $pdo, $oauth_server) {
     echo "\nPDO::errorInfo():\n";
     print_r($pdo->errorInfo());
   }
+  
+  //file_put_contents("/tmp/php-debug.txt",  var_export($key, true));
 
   $stmt->execute(array(':key' => $key));
   $stmt->setFetchMode(PDO::FETCH_CLASS, 'Invitation');
