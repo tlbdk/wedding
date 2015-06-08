@@ -11,7 +11,7 @@
       <ul>
         <li ng-repeat="gift in gifts">
           <div class="gift">
-            <h3>{{gift.title}} : {{gift.amount}} EUR</h3>
+            <h3>{{gift.title}} : <input class="amount" type="text" ng-model="gift.amount" size="4" /> EUR</h3>
             <div class="wrap">
               <div class="buttons">
                 <button class="increment" ng-click="increment(gift, 10)" >+ 10 EUR</button>
@@ -22,13 +22,12 @@
           </div>
         </li>
       </ul>
-      
-      <button class="pay" ng-click="pay_confirmation()" ng-disabled="total === 0" >Give a total of {{total}} EUR</button>
+      <button class="pay" ng-click="pay_confirmation()" ng-disabled="getTotal() === 0" >Give a total of {{getTotal()}} EUR</button>
     </div>
   </div>
   <script type="text/ng-template" id="pay_confirmation">
     <h2>Payment methods</h2>
-    <p>Please make a transfer of <b>{{total}} EUR</b> using one of the following payment methods</p>
+    <p>Please make a transfer of <b>{{getTotal()}} EUR</b> using one of the following payment methods</p>
       <ul>
         <li>
           <b>Danish Bank Account Transfer</b>

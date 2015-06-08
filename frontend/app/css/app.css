@@ -528,6 +528,10 @@ button.green:hover {
   background: #31A15B;
   color: white;
 }
+.gifts input.amount {
+  height: 100%;
+}
+
 .ngdialog.ngdialog-theme-default button.red {
   color: red;
   border-color: red;

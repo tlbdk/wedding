@@ -42,8 +42,9 @@ weddingControllers.controller('RSVPShowCtrl', ['$scope', '$location', '$routePar
   };
 }]);
 
-weddingControllers.controller('GiftsCtrl', ['$scope', '$location', 'Pay', 'ngDialog', function($scope, $location, Pay, ngDialog) {
-  $scope.total = 0;
+weddingControllers.controller('GiftsCtrl', ['$scope', '$location', 'Pay', 'ngDialog', 'ExchangeRates', function($scope, $location, Pay, ngDialog, ExchangeRates) {
+  $scope.rates = ExchangeRates.get();
+  
   $scope.gifts = [
     {
       "title": "The wedding trip",
@@ -68,15 +69,23 @@ weddingControllers.controller('GiftsCtrl', ['$scope', '$location', 'Pay', 'ngDia
   ];
   
   $scope.increment = function(gift, amount) {
-    gift.amount += amount;
-    $scope.total += amount;
+    gift.amount = parseInt(gift.amount) + amount;
   }
   
   $scope.decrement = function(gift, amount) {
-    if(gift.amount > 0) {
-      gift.amount -= amount;
-      $scope.total -= amount;
+    if(parseInt(gift.amount) - amount > 0) {
+      gift.amount = parseInt(gift.amount) - amount;
+    } else {
+      gift.amount = 0;
     }
+  }
+  
+  $scope.getTotal = function() {
+    var total = 0;
+    $scope.gifts.forEach(function(gift, index){
+      total += parseInt(gift.amount);
+    });
+    return total;
   }
   
   $scope.pay_confirmation = function () {

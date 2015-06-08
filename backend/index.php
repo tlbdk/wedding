@@ -226,6 +226,36 @@ $app->options('/pay', function() use ($app) {
     $app->response()->header('Access-Control-Allow-Methods', 'GET, POST');
 });
 
+$app->get('/exchangerates', function () use($app, $pdo) {
+  // Cache file so we use a local version for 24 hours
+  $tmprates = sys_get_temp_dir()."/exchangerates.json";
+  $stat = 0;
+  if(file_exists($tmprates)) {
+    $stat = stat($tmprates);
+  }          
+  if( !$stat || ($stat['mtime'] + 60 * 60 * 24 < time()) ) {
+    file_put_contents($tmprates, fopen("https://openexchangerates.org/api/latest.json?app_id=1f692ea23ff64e3d97f305cffa1780ab", 'r'));
+  }
+  $rates =  json_decode(file_get_contents($tmprates), true);
+
+  $rates = $rates['rates'];
+  
+  // Create response
+  $json = json_encode($rates, JSON_PRETTY_PRINT);
+  $response = $app->response;
+  $response['Content-Type'] = 'application/json';
+  $response['Access-Control-Allow-Origin'] = '*';
+  $response->body(json_encode($rates));
+});
+
+$app->options('/exchangerates', function() use ($app) {
+    $app->response()->header('Access-Control-Allow-Origin', '*');
+    $app->response()->header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    $app->response()->header('Access-Control-Allow-Methods', 'GET');
+});
+
+
+
 $app->run();
 
 // Classes

@@ -13,6 +13,10 @@ weddingServices.factory('RSVP', ['$resource', 'Configuration', function($resourc
   });
 }]);
 
+weddingServices.factory('ExchangeRates', ['$resource', 'Configuration', function($resource, Configuration){
+  return $resource(Configuration.API + '/exchangerates');
+}]);
+
 weddingServices.factory('Invitation', ['$resource', 'Configuration', function($resource, Configuration){
   return $resource(Configuration.API + '/invitation');
 }]);
