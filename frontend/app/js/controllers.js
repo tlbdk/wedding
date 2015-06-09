@@ -83,7 +83,7 @@ weddingControllers.controller('GiftsCtrl', ['$scope', '$location', 'Pay', 'ngDia
   $scope.getTotal = function() {
     var total = 0;
     $scope.gifts.forEach(function(gift, index){
-      total += parseInt(gift.amount);
+      total += parseInt(gift.amount) || 0;
     });
     return total;
   }
