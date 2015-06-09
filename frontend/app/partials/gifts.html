@@ -11,7 +11,7 @@
       <ul>
         <li ng-repeat="gift in gifts">
           <div class="gift">
-            <h3>{{gift.title}} : <input class="amount" type="text" ng-model="gift.amount" size="4" /> EUR</h3>
+            <h3>{{gift.title}} : <input class="amount" type="text" ng-model="gift.amount" size="4" /> EUR (DKK {{ rates['DKK'] / rates['EUR'] * gift.amount | noCommaCurrency:'' }})</h3>
             <div class="wrap">
               <div class="buttons">
                 <button class="increment" ng-click="increment(gift, 10)" >+ 10 EUR</button>
