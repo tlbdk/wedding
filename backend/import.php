@@ -4,20 +4,44 @@ $pdo = new PDO("mysql:host=localhost;dbname=wedding", 'root', '', array(PDO::ATT
 $pdo->query("SET SESSION time_zone = '+00:00'");
 $pdo->query("SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
 
+
+if(count($argv) < 2) {
+  echo "php import.php guest-list.csv\n";
+  exit(255);
+}
+
+$guestlist = $argv[1];
+
 //$pdo->query("TRUNCATE TABLE pay");
 //$pdo->query("TRUNCATE TABLE guest");
 //$pdo->query("TRUNCATE TABLE invitation");
 
+$stmt = $pdo->prepare("SELECT `key` FROM invitation");
+if (!$stmt) {
+    echo "\nPDO::errorInfo():\n";
+    print_r($pdo->errorInfo());
+    exit;
+  }
+$stmt->execute();
+$stmt->setFetchMode(PDO::FETCH_COLUMN, 0);
+
+$keys = [];
+while($key = $stmt->fetch()) {
+    $keys[$key] = true;
+}
+
 $row = 1;
-if (($handle = fopen("/home/tlb/Downloads/Guest list - Sheet1.csv", "r")) !== FALSE) {
+if (($handle = fopen($guestlist, "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
       if($row++ === 1) { continue; }
-      
+           
       if(!empty($data[1]) and !empty($data[6]) and !empty($data[7]) and $data[6] !== "TOTAL") {
         $title = $data[6];
         $language = $data[7];
         $conjugation = $data[8] ? $data[8] : null;
         $key = $data[13];
+     
+        if(isset($keys[$key])) { continue; }
         
         if(empty($key)) {
           echo "missing key in row $row : $title\n";
