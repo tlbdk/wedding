@@ -17,7 +17,7 @@ connection.query('SELECT * from invitation', function(err, rows, fields) {
     async.eachLimit(rows, 4, function(row, callback){
       console.log(row['title']);
       if(row['language'] === 'English') { 
-        generateInvitation("invitation_en.svg", "tmp/" + row['id'], {
+        generateInvitation("invitation_en-simple.svg", "tmp/" + row['id'], {
           title: ['tspan4678', row['title']],
           code: ['tspan4682', row['key']],
           link: ['image232', "https://www.married.dk/#?key=" + row['key']]
@@ -37,13 +37,13 @@ connection.query('SELECT * from invitation', function(err, rows, fields) {
             link: ['image254', "https://www.married.dk/#?key=" + row['key']]
           }, callback);
         } else if(row['conjugation'] === 'Singular Female') {
-          generateInvitation("invitation_lv_singular_female.svg", "tmp/" + row['id'], {
+          generateInvitation("invitation_lv_singular_female-simple.svg", "tmp/" + row['id'], {
             title: ['tspan4678', row['title']],
             code: ['tspan4682', row['key']],
             link: ['image256', "https://www.married.dk/#?key=" + row['key']]
           }, callback);
         } else if(row['conjugation'] === 'Singular Male') {
-          generateInvitation("invitation_lv_singular_male.svg", "tmp/" + row['id'], {
+          generateInvitation("invitation_lv_singular_male-simple.svg", "tmp/" + row['id'], {
             title: ['tspan4678', row['title']],
             code: ['tspan4682', row['key']],
             link: ['image256', "https://www.married.dk/#?key=" + row['key']]
